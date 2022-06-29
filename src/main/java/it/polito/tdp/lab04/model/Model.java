@@ -26,7 +26,11 @@ public class Model {
 		return this.corsoDAO.getTuttiICorsi();	
 	}
 	
+	public List<Studente> getStudentibyCorso(Corso corso) {
+		return this.corsoDAO.getStudentibyCorso(corso);
+	}
 	
+		
 	public Studente getStudente(int matricola) {
 		return this.studenteDAO.getStudente(matricola);
 	}

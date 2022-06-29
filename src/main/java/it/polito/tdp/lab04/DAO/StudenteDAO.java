@@ -52,7 +52,9 @@ public class StudenteDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore Db", e);
 		}
+		
 	}
+
 
 	
 	

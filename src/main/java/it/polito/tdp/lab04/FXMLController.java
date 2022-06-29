@@ -66,7 +66,23 @@ public class FXMLController {
 
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
-
+    	
+    	Corso corso = comboCorsi.getValue();
+    	
+    	if(corso == null)
+    		txtResult.setText("Selezionare un corso.");
+    	
+    	
+    	List<Studente> studentiByCorso = model.getStudentibyCorso(corso);
+    	
+    	String elenco = "";
+    	
+    	for(Studente s : studentiByCorso) {
+    		elenco += s + "\n";
+    	}
+    	
+    	txtResult.setText(elenco);
+    
     }
 
     @FXML

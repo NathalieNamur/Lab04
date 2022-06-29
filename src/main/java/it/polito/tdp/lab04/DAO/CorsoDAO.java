@@ -63,6 +63,59 @@ public class CorsoDAO {
 	}
 	
 
+	//METODO PER OTTENERE TUTTI GLI STUDENTI ISCRITTI A UN DATO CORSO:
+	public List<Studente> getStudentibyCorso(Corso corso) {
+		
+		//Stringa contenente la query:
+		final String sql = "SELECT * FROM iscrizione i , studente s "
+						 + "WHERE i.matricola = s.matricola "
+						 + "AND codins=?";
+
+		//Struttura dati dei valori di ritorno:
+		List<Studente> studentiByCorso = new LinkedList<Studente>();
+
+		//Codice di accesso effettivo al database (try-catch):
+		try {
+					
+			//Connessione:
+			Connection conn = ConnectDB.getConnection();
+					
+			//PreparedStatement:
+			PreparedStatement st = conn.prepareStatement(sql);
+
+			//Inserire paramentri nella query (metodo set corretto):
+			st.setString(1, corso.getCodins());
+					
+			//Esecuzione della query e salvataggio del risultato:
+					
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+						
+				//Creazione di uno Studente temporaneo
+				//in cui salvare la riga del database letta:
+				int matricola = rs.getInt("matricola");
+				String nome = rs.getString("nome");
+				String cognome = rs.getString("cognome");		
+
+				Studente sTemp = new Studente(matricola, nome, cognome);
+						
+				//Inserimento di tale Corso nella struttura dati risultante:
+				studentiByCorso.add(sTemp);
+			}
+
+			//Chiusura di tutti gli elementi:
+			conn.close();
+					
+			//Return della struttura dati creata:
+			return studentiByCorso;
+					
+		} catch (SQLException e) {
+			throw new RuntimeException("Errore Db", e);
+		}
+		
+		
+	}
 	
 	
 	/*
@@ -72,12 +125,7 @@ public class CorsoDAO {
 		// TODO
 	}
 
-	/*
-	 * Ottengo tutti gli studenti iscritti al Corso
-	 */
-	public void getStudentiIscrittiAlCorso(Corso corso) {
-		// TODO
-	}
+	
 
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
