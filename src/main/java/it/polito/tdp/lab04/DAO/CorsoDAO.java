@@ -10,46 +10,59 @@ import java.util.List;
 import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Studente;
 
+
 public class CorsoDAO {
 	
-	/*
-	 * Ottengo tutti i corsi salvati nel Db
-	 */
+	//METODO PER OTTENERE TUTTI I CORSI SALVATI NEL DB:
 	public List<Corso> getTuttiICorsi() {
 
+		//Stringa contenente la query:
 		final String sql = "SELECT * FROM corso";
 
+		//Struttura dati dei valori di ritorno:
 		List<Corso> corsi = new LinkedList<Corso>();
 
+		//Codice di accesso effettivo al database (try-catch):
 		try {
+			
+			//Connessione:
 			Connection conn = ConnectDB.getConnection();
+			
+			//PreparedStatement:
 			PreparedStatement st = conn.prepareStatement(sql);
 
+			//Esecuzione della query e salvataggio del risultato:
+			
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
-
+				
+				//Creazione di un Corso temporaneo
+				//in cui salvare la riga del database letta:
 				String codins = rs.getString("codins");
 				int numeroCrediti = rs.getInt("crediti");
 				String nome = rs.getString("nome");
 				int periodoDidattico = rs.getInt("pd");
 
-				System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
-
-				// Crea un nuovo JAVA Bean Corso
-				// Aggiungi il nuovo oggetto Corso alla lista corsi
+				Corso cTemp = new Corso(codins, numeroCrediti, nome, periodoDidattico);
+				
+				//Inserimento di tale Corso nella struttura dati risultante:
+				corsi.add(cTemp);
 			}
 
+			//Chiusura di tutti gli elementi:
 			conn.close();
 			
+			//Return della struttura dati creata:
 			return corsi;
 			
 
 		} catch (SQLException e) {
-			// e.printStackTrace();
 			throw new RuntimeException("Errore Db", e);
 		}
 	}
+	
+
 	
 	
 	/*

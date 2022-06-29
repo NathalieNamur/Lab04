@@ -6,14 +6,15 @@ import java.sql.SQLException;
 
 public class ConnectDB {
 	
-	// check user e password
-	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root&password=root";
+	//1.Definire la stringa di connessione JDBC:
+	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root&password=moustache";
 
+	//2.Aprire una connessione (try):
 	public static Connection getConnection() {
 
 		try {
-				Connection connection = DriverManager.getConnection(jdbcUrl);
-				return connection;
+			Connection connection = DriverManager.getConnection(jdbcUrl);
+			return connection;
 
 		} catch (SQLException e) {
 
