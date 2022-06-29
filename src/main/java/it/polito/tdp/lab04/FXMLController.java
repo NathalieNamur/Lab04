@@ -71,7 +71,14 @@ public class FXMLController {
 
     @FXML
     void doCercaNome(ActionEvent event) {
-
+    	
+    	int matricola = Integer.parseInt(txtMatricola.getText()); 
+    	
+    	Studente studente = model.getStudente(matricola);
+    	
+    	txtNome.setText(studente.getNome());
+    	txtCognome.setText(studente.getCognome());
+ 
     }
 
     @FXML
