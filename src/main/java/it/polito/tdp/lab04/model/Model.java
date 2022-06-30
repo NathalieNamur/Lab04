@@ -22,6 +22,7 @@ public class Model {
 	
 	
 	//METODI:
+	
 	public List<Corso> getTuttiICorsi(){
 		return this.corsoDAO.getTuttiICorsi();	
 	}

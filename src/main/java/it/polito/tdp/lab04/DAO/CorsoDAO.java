@@ -13,7 +13,8 @@ import it.polito.tdp.lab04.model.Studente;
 
 public class CorsoDAO {
 	
-	//METODO PER OTTENERE TUTTI I CORSI SALVATI NEL DB:
+	//METODO PER OTTENERE TUTTI I CORSI SALVATI NEL DB
+	//(AL FINE DI POPOLARE IL MENO A TENDINA):
 	public List<Corso> getTuttiICorsi() {
 
 		//Stringa contenente la query:
@@ -60,6 +61,7 @@ public class CorsoDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore Db", e);
 		}
+		
 	}
 	
 
@@ -109,27 +111,22 @@ public class CorsoDAO {
 					
 			//Return della struttura dati creata:
 			return studentiByCorso;
-					
+			
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore Db", e);
-		}
-		
+		}	
 		
 	}
 	
 	
-	/*
-	 * Dato un codice insegnamento, ottengo il corso
-	 */
+	/**Dato un codice insegnamento, ottengo il corso.*/
 	public void getCorso(Corso corso) {
 		// TODO
 	}
 
-	
 
-	/*
-	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
-	 */
+	/**Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.*/
 	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
 		// TODO
 		// ritorna true se l'iscrizione e' avvenuta con successo

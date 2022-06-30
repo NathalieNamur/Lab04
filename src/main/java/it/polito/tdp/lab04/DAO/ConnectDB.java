@@ -9,7 +9,7 @@ public class ConnectDB {
 	//1.Definire la stringa di connessione JDBC:
 	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root&password=moustache";
 
-	//2.Aprire una connessione (try):
+	//2.Aprire una connessione (try-catch):
 	public static Connection getConnection() {
 
 		try {
@@ -17,10 +17,12 @@ public class ConnectDB {
 			return connection;
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 			throw new RuntimeException("Cannot get a connection " + jdbcUrl, e);
 		}
+		
 	}
 
+	
+	
 }

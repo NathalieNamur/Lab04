@@ -23,7 +23,7 @@ public class Corso {
 
 		
 
-	//METODI:
+	//METODI DI DEFAULT:
 	
 	public String getCodins() {
 		return codins;

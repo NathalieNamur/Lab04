@@ -12,7 +12,7 @@ import it.polito.tdp.lab04.model.Studente;
 
 public class StudenteDAO {
 	
-	//METODO PER OTTENERE LO STUDENTE DATA LA MATRICOLA
+	//METODO PER OTTENERE LO STUDENTE DATA LA MATRICOLA:
 	public Studente getStudente(int matricola) {
 		
 		//Stringa contenente la query:
@@ -48,7 +48,8 @@ public class StudenteDAO {
 					
 			//Return del valore creato:
 			return studente;
-					
+		
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore Db", e);
 		}
@@ -56,7 +57,7 @@ public class StudenteDAO {
 	}
 
 	
-	//METODO PER OTTENERE TUTTI I CORSI A CUI E' ISCRITTO UN DATO STUDENTE (matricola:
+	//METODO PER OTTENERE TUTTI I CORSI A CUI E' ISCRITTO UN DATO STUDENTE (matricola):
 	public List<Corso> getCorsiByStudente(int matricola) {
 			
 		//Stringa contenente la query:
@@ -103,7 +104,8 @@ public class StudenteDAO {
 						
 			//Return della struttura dati creata:
 			return corsiByStudente;
-						
+			
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore Db", e);
 		}
@@ -120,7 +122,7 @@ public class StudenteDAO {
 						 + "AND codins = ?";
 
 		//Valore di ritorno:
-		boolean studenteIscrittoACorso = false; //NB: inizializzazione!
+		boolean studenteIscrittoACorso = false; 
 
 		//Codice di accesso effettivo al database (try-catch):
 		try {
@@ -149,12 +151,14 @@ public class StudenteDAO {
 			//Chiusura di tutti gli elementi:
 			conn.close();
 								
-			//Return della struttura dati creata:
+			//Return valore di ritorno:
 			return studenteIscrittoACorso;
 								
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("Errore Db", e);
 		}
+		
 	}
 
 	

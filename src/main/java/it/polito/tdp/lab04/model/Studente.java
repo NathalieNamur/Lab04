@@ -21,7 +21,7 @@ public class Studente {
 
 
 
-	//METODI:
+	//METODI DI DEFAULT:
 	
 	public int getMatricola() {
 		return matricola;
