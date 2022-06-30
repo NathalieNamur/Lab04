@@ -38,4 +38,11 @@ public class Model {
 	public List<Corso> getCorsiByStudente(int matricola) {
 		return this.studenteDAO.getCorsiByStudente(matricola);
 	}
+	
+	public boolean isStudenteIscrittoACorso(int matricola, Corso corso) {
+		return this.studenteDAO.isStudenteIscrittoACorso(matricola, corso);
+	}
+	
+	
+	
 }

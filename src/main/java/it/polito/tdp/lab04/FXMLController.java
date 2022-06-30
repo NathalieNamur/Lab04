@@ -30,13 +30,16 @@ public class FXMLController {
     private URL location;
 
     @FXML
-    private Button btnCercaCorsi;
+    private Button btnCerca;
+    
+    @FXML
+    private Button btnCercaCorsiStudente;
 
     @FXML
     private Button btnCercaIscrittiCorso;
 
     @FXML
-    private Button btnCercaNome;
+    private Button btnCompletamentoAutomatico;
 
     @FXML
     private Button btnIscriviti;
@@ -61,9 +64,25 @@ public class FXMLController {
 
     
     
+    @FXML
+    void doCerca(ActionEvent event) {
+    	
+    	int matricola = Integer.parseInt(txtMatricola.getText());
+    	Corso corso = comboCorsi.getValue();
+    	
+    	boolean result = model.isStudenteIscrittoACorso(matricola, corso);
+    	
+    	if(result == true)
+    		txtResult.setText("Lo studente:\n"+model.getStudente(matricola)+"\nè iscritto al corso di "+corso+".");
+    	else
+    		txtResult.setText("Lo studente:\n"+model.getStudente(matricola)+"\nNON è iscritto al corso di "+corso+".");
+    	
+
+    }
+    
     
     @FXML
-    void doCercaCorsi(ActionEvent event) {
+    void doCercaCorsiStudente(ActionEvent event) {
     	
     	int matricola = Integer.parseInt(txtMatricola.getText());
     	Studente studente = model.getStudente(matricola);
@@ -113,7 +132,7 @@ public class FXMLController {
 
     
     @FXML
-    void doCercaNome(ActionEvent event) {
+    void doCompletamentoAutomatico(ActionEvent event) {
     	
     	int matricola = Integer.parseInt(txtMatricola.getText()); 
     	
@@ -167,9 +186,9 @@ public class FXMLController {
     
     @FXML
     void initialize() {
-        assert btnCercaCorsi != null : "fx:id=\"btnCercaCorsi\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert btnCercaCorsiStudente != null : "fx:id=\"btnCercaCorsi\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnCercaIscrittiCorso != null : "fx:id=\"btnCercaIscrittiCorso\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert btnCercaNome != null : "fx:id=\"btnCercaNome\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert btnCompletamentoAutomatico != null : "fx:id=\"btnCercaNome\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnIscriviti != null : "fx:id=\"btnIscriviti\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
         assert comboCorsi != null : "fx:id=\"comboCorsi\" was not injected: check your FXML file 'Scene.fxml'.";

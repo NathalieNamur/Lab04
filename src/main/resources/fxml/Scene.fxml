@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.lab04.FXMLController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.lab04.FXMLController">
    <top>
       <Label text="Lab04 - Segreteria Studenti:" textFill="#dd0a0a" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets top="5.0" />
+            <Insets bottom="5.0" top="5.0" />
          </BorderPane.margin>
          <font>
             <Font size="20.0" />
@@ -23,7 +23,7 @@
       </Label>
    </top>
    <center>
-      <VBox spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="345.0" prefWidth="423.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
@@ -44,22 +44,26 @@
                      </HBox.margin>
                   </Label>
                   <TextField fx:id="txtMatricola" prefHeight="25.0" prefWidth="100.0" promptText="matricola" />
-                  <Button fx:id="btnCercaNome" mnemonicParsing="false" onAction="#doCercaNome" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: green;" text="✔" textFill="WHITE" />
+                  <Button fx:id="btnCompletamentoAutomatico" mnemonicParsing="false" onAction="#doCompletamentoAutomatico" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: green;" text="✔" textFill="WHITE" />
                   <TextField fx:id="txtNome" editable="false" prefHeight="25.0" prefWidth="100.0" promptText="nome" />
                   <TextField fx:id="txtCognome" editable="false" prefHeight="25.0" prefWidth="100.0" promptText="cognome" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Button fx:id="btnCercaCorsi" mnemonicParsing="false" onAction="#doCercaCorsi" text="Cerca Corsi" />
+                  <Button fx:id="btnCercaCorsiStudente" mnemonicParsing="false" onAction="#doCercaCorsiStudente" text="Cerca Corsi" />
                   <Button fx:id="btnIscriviti" mnemonicParsing="false" onAction="#doIscriviti" text="Iscriviti" />
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </HBox>
-            <TextArea fx:id="txtResult" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doReset" text="Reset" />
+            <Button fx:id="btnCerca" mnemonicParsing="false" onAction="#doCerca" text="Cerca" />
+            <TextArea fx:id="txtResult" />
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doReset" text="Reset">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="375.0" />
+               </VBox.margin></Button>
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
