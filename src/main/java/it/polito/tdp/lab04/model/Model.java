@@ -34,4 +34,8 @@ public class Model {
 	public Studente getStudente(int matricola) {
 		return this.studenteDAO.getStudente(matricola);
 	}
+	
+	public List<Corso> getCorsiByStudente(int matricola) {
+		return this.studenteDAO.getCorsiByStudente(matricola);
+	}
 }

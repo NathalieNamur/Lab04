@@ -59,11 +59,37 @@ public class FXMLController {
     @FXML
     private TextArea txtResult;
 
+    
+    
+    
     @FXML
     void doCercaCorsi(ActionEvent event) {
-
+    	
+    	int matricola = Integer.parseInt(txtMatricola.getText());
+    	Studente studente = model.getStudente(matricola);
+    	
+    	if (studente == null){ 
+			txtResult.setText("Nessun risultato: matricola inesistente");
+			return;
+		}
+    	
+    	//NB:
+    	//Il return è indispensabile, altrimenti l'errore non si stampa!!
+    	
+    	
+    	List<Corso> corsiByStudente = model.getCorsiByStudente(matricola);
+    	
+    	String elenco = "";
+    	
+    	for(Corso c : corsiByStudente) {
+    		elenco += c + "\n";
+    	}
+    	
+    	txtResult.setText(elenco);
+    	
     }
 
+    
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
     	
@@ -85,6 +111,7 @@ public class FXMLController {
     
     }
 
+    
     @FXML
     void doCercaNome(ActionEvent event) {
     	
@@ -97,11 +124,13 @@ public class FXMLController {
  
     }
 
+    
     @FXML
     void doIscriviti(ActionEvent event) {
 
     }
 
+    
     @FXML
     void doReset(ActionEvent event) {
 
@@ -114,6 +143,7 @@ public class FXMLController {
     	txtResult.clear();
     }
 
+    
     
     //METODO setModel():
     public void setModel(Model model) {
