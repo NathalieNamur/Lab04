@@ -52,7 +52,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Button fx:id="btnCercaCorsiStudente" mnemonicParsing="false" onAction="#doCercaCorsiStudente" text="Cerca Corsi" />
-                  <Button fx:id="btnIscriviti" mnemonicParsing="false" onAction="#doIscriviti" text="Iscriviti" />
+                  <Button fx:id="btnIscriviti" mnemonicParsing="false" onAction="#doIscriviti" text="Iscriviti" textFill="WHITE" />
                </children>
                <VBox.margin>
                   <Insets />
